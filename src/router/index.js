@@ -6,8 +6,8 @@ import App from '../App.vue'
 
 Vue.use(VueRouter)
 
-let auth = App.data().logged;
-console.log(App.data().logged);
+//let auth = App.data();
+console.log(App.data());
 
 const routes = [
    {
@@ -76,7 +76,7 @@ const routes = [
       path: '/dashboard',
       name: 'Dashboard',
       component: () => import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue'),
-      beforeEnter: (to, from, next) =>{ (auth) ? next() : next({name: 'Login'}); }
+      beforeEnter: (to, from, next) =>{ (App.data().logged) ? next() : next({name: 'Login'}); }
    },
    {
       path: '/error',
