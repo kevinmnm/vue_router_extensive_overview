@@ -33,7 +33,7 @@ export default {
             if (this.id_list.includes(this.id_input) && this.pw_list.includes(this.pw_input)){
                this.auth = true;
                this.$emit('logged-status', this.auth);
-               
+               console.log('Login-comp value: ' + this.auth);
             } else {
                alert('wrong info');
                this.id_input = '';
@@ -43,10 +43,7 @@ export default {
             alert('Please provide ID and PW');
          }
       }
-   },
-   // mounted(){
-   //    console.dir( this.$router );
-   // }
+   }
 };
 </script>
 

@@ -2,13 +2,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
-import App from '../App.vue'
+//import App from '../App.vue'
 
 Vue.use(VueRouter)
 
 //let auth = App.data();
-console.log(App.data());
-
+//console.log(App.data());
+let abcsdfsdfsdf = 'sdfsdfsdf';
+console.log(abcsdfsdfsdf);
 const routes = [
    {
       path: '/',
@@ -76,7 +77,49 @@ const routes = [
       path: '/dashboard',
       name: 'Dashboard',
       component: () => import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue'),
-      beforeEnter: (to, from, next) =>{ (App.data().logged) ? next() : next({name: 'Login'}); }
+      beforeEnter(to, from, next){
+         (async ()=>{
+            const mod = await import('@/components/login-comp.vue');
+            alert(mod.default.data().auth);
+            next();
+         })()
+      }
+
+
+
+      // async beforeEnter(to, from, next){
+      //    let auth = false;
+      //    function first(){
+      //       return new Promise(function(res){
+      //          import('@/components/login-comp.vue').then((done)=>{
+      //             auth = done.default.data().auth;
+      //             console.log(auth);
+      //             res(auth);
+      //          })
+      //       })
+      //    }
+      //    let result = await first();
+      //    alert(result)
+      //    result ? next() : next({name: 'Login'});
+      // }
+      
+      //(to, from, next) => { 
+      //    import('@/components/login-comp.vue').then((done)=>{
+      //       let result = done.default.data().auth;
+      //       console.log(result);
+      //       result ? next() : next({name:'Login'});
+      //    });
+      // }
+      // (to, from, next) => {
+      //    import('../App.vue').then((module)=>{
+      //       alert(module);
+      //       // if (App.data().logged) {
+      //       //    next()
+      //       // } else {
+      //       //    console.log('Router value: ' + App.data().logged)
+      //       // }
+      //    }
+      // }
    },
    {
       path: '/error',

@@ -31,6 +31,14 @@ export default {
    methods: {
       received(e){
          this.logged = e
+         console.log('App.vue logged value is: ' + this.logged);
+      }
+   },
+   watch: {
+      logged(){
+         setTimeout(()=>{
+         this.$router.push({name: 'Dashboard'});
+         },1000);
       }
    }
 };
