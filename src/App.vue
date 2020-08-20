@@ -40,6 +40,13 @@ export default {
          this.$router.push({name: 'Dashboard'});
          },1000);
       }
+   },
+   beforeRouteEnter(to, from, next){
+      if (to.name === 'Dashboard' && this.logged === true){
+         next();
+      } else {
+         next({name: 'Login'});
+      }
    }
 };
 </script>
